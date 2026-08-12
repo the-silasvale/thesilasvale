@@ -88,33 +88,7 @@
     });
   });
 
-  // 5. Horizontal Scroll Hijack for The Blackwood Saga
-  // Pin the wrapper, slide the track left
-  const horizWrap = document.getElementById("horizontalWrap");
-  const horizTrack = document.getElementById("horizontalTrack");
-
-  if (horizWrap && horizTrack) {
-    // Calculate the distance to scroll horizontally
-    function getScrollAmount() {
-      let trackWidth = horizTrack.scrollWidth;
-      return -(trackWidth - window.innerWidth + (window.innerWidth * 0.1)); // leaving some padding
-    }
-
-    const tween = gsap.to(horizTrack, {
-      x: getScrollAmount,
-      ease: "none"
-    });
-
-    ScrollTrigger.create({
-      trigger: horizWrap,
-      start: "top 10%", // pin slightly below the nav
-      end: () => `+=${getScrollAmount() * -1}`, // scroll duration equals horizontal distance
-      pin: true,
-      animation: tween,
-      scrub: 1,
-      invalidateOnRefresh: true
-    });
-  }
+  // 5. Horizontal Scroll Removed (Now a standard series block)
 
   // 6. Magnetic Hover Links (Emil Kowalski Physics)
   const magneticEls = document.querySelectorAll(".magnetic");

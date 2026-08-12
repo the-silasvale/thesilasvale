@@ -30,9 +30,14 @@
     <div class="nav__inner">
       <a href="#home" class="nav__logo">SILAS VALE</a>
       <nav class="nav__links">
-        <a href="#about" class="magnetic">About</a>
-        <a href="#library" class="magnetic">Library</a>
-        <a href="#connect" class="magnetic">Connect</a>
+        <div class="nav__dropdown">
+          <button class="nav__dropdown-btn magnetic">Menu</button>
+          <div class="nav__dropdown-content">
+            <a href="#about">About</a>
+            <a href="#library">Library</a>
+            <a href="#connect">Connect</a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -181,114 +186,78 @@
         </div>
       </div>
 
-      <!-- 4. The Blackwood Saga (Horizontal Scroll) -->
-      <div class="blackwood-header">
-        <p class="section-eyebrow">The Blackwood Saga</p>
-        <h2 class="library__title">The mind doesn't break all at once.</h2>
-        <a href="https://www.amazon.com/dp/B0H6LS1MZY" target="_blank" class="btn-buy magnetic" style="margin-top: 2rem;">Purchase Series</a>
-      </div>
-
-      <div class="horizontal-scroll-wrap" id="horizontalWrap">
-        <div class="horizontal-scroll-track" id="horizontalTrack">
-          
-          <article class="museum-book">
-            <div class="museum-book__cover">
-              <img src="assets/covers/Induction.png" alt="Induction" />
+      <!-- 4. The Blackwood Saga -->
+      <div class="series-block scroll-reveal">
+        <div class="series-block__text">
+          <p class="section-eyebrow">Psychological Thriller</p>
+          <h2>The Blackwood Saga</h2>
+          <p class="desc">The mind doesn't break all at once. An immersive 7-book psychological thriller series.</p>
+          <a href="https://www.amazon.com/dp/B0H6LS1MZY" target="_blank" class="btn-buy magnetic">Purchase Series</a>
+        </div>
+        <div class="series-block__covers card-fan">
+          <div class="series-book sb-grid" style="order: 1;">
+            <a href="https://www.amazon.com/dp/B0H1YN1CJ9" target="_blank" class="parallax-series">
+              <img src="assets/covers/Induction.png" alt="Induction: The Veritas Protocol" />
+            </a>
+            <div class="card-details">
+              <p class="card-title">Book 1: Induction<br><span>The Veritas Protocol</span></p>
+              <a href="https://www.amazon.com/dp/B0H1YN1CJ9" target="_blank" class="btn-buy--small">Purchase</a>
             </div>
-            <div class="museum-book__meta">
-              <span class="num">01</span>
-              <div>
-                <h3>Induction</h3>
-                <p>The first rule of Blackwood: you don't remember arriving.</p>
-                <a href="https://www.amazon.com/dp/B0H1YN1CJ9" target="_blank" class="btn-buy">Purchase</a>
-              </div>
+          </div>
+          <div class="series-book sb-grid" style="order: 2;">
+            <a href="https://www.amazon.com/dp/B0H6LK4YDS" target="_blank" class="parallax-series">
+              <img src="assets/covers/The Blind Study.png" alt="The Blind Study: Isolation's Grip" />
+            </a>
+            <div class="card-details">
+              <p class="card-title">Book 2: The Blind Study<br><span>Isolation's Grip</span></p>
+              <a href="https://www.amazon.com/dp/B0H6LK4YDS" target="_blank" class="btn-buy--small">Purchase</a>
             </div>
-          </article>
-
-          <article class="museum-book">
-            <div class="museum-book__cover">
-              <img src="assets/covers/The Blind Study.png" alt="The Blind Study" />
+          </div>
+          <div class="series-book sb-grid" style="order: 3;">
+            <a href="https://www.amazon.com/dp/B0H4HPTSSY" target="_blank" class="parallax-series">
+              <img src="assets/covers/The Transference.png" alt="The Transference: The Crossing" />
+            </a>
+            <div class="card-details">
+              <p class="card-title">Book 3: The Transference<br><span>The Crossing</span></p>
+              <a href="https://www.amazon.com/dp/B0H4HPTSSY" target="_blank" class="btn-buy--small">Purchase</a>
             </div>
-            <div class="museum-book__meta">
-              <span class="num">02</span>
-              <div>
-                <h3>The Blind Study</h3>
-                <p>Solitude is the cleanest form of control.</p>
-                <a href="https://www.amazon.com/dp/B0H6LK4YDS" target="_blank" class="btn-buy">Purchase</a>
-              </div>
+          </div>
+          <div class="series-book sb-grid" style="order: 4;">
+            <a href="https://www.amazon.com/dp/B0H8C6R4B4" target="_blank" class="parallax-series">
+              <img src="assets/covers/The Dissociation.jpg" alt="The Dissociation: The Fracture" />
+            </a>
+            <div class="card-details">
+              <p class="card-title">Book 4: The Dissociation<br><span>The Fracture</span></p>
+              <a href="https://www.amazon.com/dp/B0H8C6R4B4" target="_blank" class="btn-buy--small">Purchase</a>
             </div>
-          </article>
-
-          <article class="museum-book">
-            <div class="museum-book__cover">
-              <img src="assets/covers/The Transference.png" alt="The Transference" />
+          </div>
+          <div class="series-book sb-grid" style="order: 5;">
+            <a href="https://www.amazon.com/dp/B0H9B4L48N" target="_blank" class="parallax-series">
+              <img src="assets/covers/The Retrograde.png" alt="The Retrograde: The Mirror of Years" />
+            </a>
+            <div class="card-details">
+              <p class="card-title">Book 5: The Retrograde<br><span>The Mirror of Years</span></p>
+              <a href="https://www.amazon.com/dp/B0H9B4L48N" target="_blank" class="btn-buy--small">Purchase</a>
             </div>
-            <div class="museum-book__meta">
-              <span class="num">03</span>
-              <div>
-                <h3>The Transference</h3>
-                <p>They will transplant more than your memories.</p>
-                <a href="https://www.amazon.com/dp/B0H4HPTSSY" target="_blank" class="btn-buy">Purchase</a>
-              </div>
+          </div>
+          <div class="series-book sb-grid" style="order: 6;">
+            <a href="https://www.amazon.com/dp/B0GY3XNLVG" target="_blank" class="parallax-series">
+              <img src="assets/covers/The Rebellion.png" alt="The Rebellion: The Compliant Trap" />
+            </a>
+            <div class="card-details">
+              <p class="card-title">Book 6: The Rebellion<br><span>The Compliant Trap</span></p>
+              <a href="https://www.amazon.com/dp/B0GY3XNLVG" target="_blank" class="btn-buy--small">Purchase</a>
             </div>
-          </article>
-
-          <article class="museum-book">
-            <div class="museum-book__cover">
-              <img src="assets/covers/The Dissociation.jpg" alt="The Dissociation" />
+          </div>
+          <div class="series-book sb-grid" style="order: 7;">
+            <a href="https://www.amazon.com/dp/B0HBN48XDY" target="_blank" class="parallax-series">
+              <img src="assets/covers/The Termination.png" alt="The Termination: The Escape" />
+            </a>
+            <div class="card-details">
+              <p class="card-title">Book 7: The Termination<br><span>The Escape</span></p>
+              <a href="https://www.amazon.com/dp/B0HBN48XDY" target="_blank" class="btn-buy--small">Purchase</a>
             </div>
-            <div class="museum-book__meta">
-              <span class="num">04</span>
-              <div>
-                <h3>The Dissociation</h3>
-                <p>The mind doesn't break all at once.</p>
-                <a href="https://www.amazon.com/dp/B0H8C6R4B4" target="_blank" class="btn-buy">Purchase</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="museum-book">
-            <div class="museum-book__cover">
-              <img src="assets/covers/The Retrograde.png" alt="The Retrograde" />
-            </div>
-            <div class="museum-book__meta">
-              <span class="num">05</span>
-              <div>
-                <h3>The Retrograde</h3>
-                <p>She remembers a life she never lived.</p>
-                <a href="https://www.amazon.com/dp/B0H9B4L48N" target="_blank" class="btn-buy">Purchase</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="museum-book">
-            <div class="museum-book__cover">
-              <img src="assets/covers/The Rebelion.png" alt="The Rebellion" />
-            </div>
-            <div class="museum-book__meta">
-              <span class="num">06</span>
-              <div>
-                <h3>The Rebellion</h3>
-                <p>Compliance is the most dangerous cage.</p>
-                <a href="https://www.amazon.com/dp/B0GY3XNLVG" target="_blank" class="btn-buy">Purchase</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="museum-book">
-            <div class="museum-book__cover">
-              <img src="assets/covers/The Termination.png" alt="The Termination" />
-            </div>
-            <div class="museum-book__meta">
-              <span class="num">07</span>
-              <div>
-                <h3>The Termination</h3>
-                <p>There is no exit from Blackwood. Only the ending.</p>
-                <a href="https://www.amazon.com/dp/B0HBN48XDY" target="_blank" class="btn-buy">Purchase</a>
-              </div>
-            </div>
-          </article>
-
+          </div>
         </div>
       </div>
 

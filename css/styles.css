@@ -88,15 +88,18 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   z-index: 100;
-  mix-blend-mode: difference;
+  background-color: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav__inner {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .nav__logo {
@@ -104,23 +107,95 @@ a {
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.1em;
+  color: var(--cream);
 }
 
-.nav__links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
+.nav__dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.nav__links a {
+.nav__dropdown-btn {
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-family: var(--sans);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  cursor: pointer;
+  padding: 0.5rem 0;
   transition: color 0.3s var(--ease-out);
 }
-.nav__links a:hover {
+
+.nav__dropdown-btn:hover {
   color: var(--red);
+}
+
+.nav__dropdown-content {
+  position: absolute;
+  top: calc(100% + 1rem);
+  right: 0;
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  min-width: 160px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.nav__dropdown:hover .nav__dropdown-content,
+.nav__dropdown:focus-within .nav__dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav__dropdown-content a {
+  color: var(--cream);
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: right;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav__dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.nav__dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--red);
+}
+
+.card-details {
+  margin-top: 1rem;
+}
+
+.card-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.card-title span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--cream-dim);
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* ---------- Hero ---------- */
@@ -380,89 +455,78 @@ a {
   margin-top: 5vw;
 }
 
-.blackwood-header {
-  padding: 5vw 5vw 0;
-  margin-bottom: 5vw;
-}
-
-.library__title {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 400;
-  font-style: italic;
-}
-
-.horizontal-scroll-wrap {
+/* ---------- 7-Book Interactive Deck (Blackwood Saga) ---------- */
+.series-block__covers.card-fan {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  z-index: 20; /* Elevate to fix clickability issues */
-}
-
-.horizontal-scroll-track {
   display: flex;
-  gap: 8vw;
-  padding: 0 5vw;
-  /* width will be managed by GSAP */
-  width: max-content;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  padding: 2rem 0; /* Room for hover scale */
 }
 
-.museum-book {
-  flex: 0 0 clamp(168px, 19.6vw, 280px);
+.series-block__covers.card-fan .series-book.sb-grid {
   position: relative;
+  width: 25%;
+  margin-left: -12%; /* Overlap previous book */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), z-index 0s;
+  cursor: pointer;
 }
 
-.museum-book__cover {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  overflow: hidden;
-  margin-bottom: 2rem;
-  background: #111;
+/* First book doesn't need negative left margin */
+.series-block__covers.card-fan .series-book.sb-grid:first-child {
+  margin-left: 0;
 }
 
-.museum-book__cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease-out), filter 0.6s;
+/* Manage Z-index so they stack correctly (left to right) */
+.series-block__covers.card-fan .series-book.sb-grid:nth-child(1) { z-index: 7; }
+.series-block__covers.card-fan .series-book.sb-grid:nth-child(2) { z-index: 6; }
+.series-block__covers.card-fan .series-book.sb-grid:nth-child(3) { z-index: 5; }
+.series-block__covers.card-fan .series-book.sb-grid:nth-child(4) { z-index: 4; }
+.series-block__covers.card-fan .series-book.sb-grid:nth-child(5) { z-index: 3; }
+.series-block__covers.card-fan .series-book.sb-grid:nth-child(6) { z-index: 2; }
+.series-block__covers.card-fan .series-book.sb-grid:nth-child(7) { z-index: 1; }
+
+/* Desktop Hover Physics */
+.series-block__covers.card-fan .series-book.sb-grid:hover {
+  transform: translateY(-40px) scale(1.15) !important;
+  z-index: 50 !important;
 }
 
-.museum-book:hover .museum-book__cover img {
-  transform: scale(1.03);
-  filter: contrast(1.1);
-}
-
-.museum-book__meta {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem 2rem;
-  align-items: baseline;
-}
-
-.museum-book__meta .num {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.5rem;
-  color: var(--red);
-}
-
-.museum-book__meta h3 {
-  font-family: var(--serif);
-  font-size: 2rem;
-  font-weight: 400;
-}
-
-.museum-book__meta p {
-  grid-column: 2;
-  font-size: 0.9rem;
-  color: var(--cream-dim);
-  margin-bottom: 1.5rem;
-}
-
-.museum-book__meta .btn-buy {
+/* Hide details in fan until hovered */
+.series-block__covers.card-fan .series-book.sb-grid .card-details {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   margin-top: 1rem;
+}
+
+.series-block__covers.card-fan .series-book.sb-grid .card-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: var(--cream);
+  line-height: 1.2;
+}
+
+.series-block__covers.card-fan .series-book.sb-grid .card-title span {
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  font-family: var(--sans);
+  font-style: normal;
+}
+
+.series-block__covers.card-fan .series-book.sb-grid:hover .card-details {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* ---------- Other Series ---------- */
@@ -622,31 +686,104 @@ a {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
-  .hero__title {
-    font-size: 22vw;
+  /* Hero Typography Fixes */
+  .title-silas {
+    font-size: clamp(4rem, 20vw, 16rem);
   }
-  .title-indent {
-    padding-left: 10vw;
+  .title-vale {
+    font-size: clamp(4rem, 20vw, 16rem);
+    margin-left: 10vw;
   }
-  .hero__image-wrap {
-    width: 80vw;
-    right: -10vw;
+  .hero__tagline-center {
+    font-size: 1.1rem;
+    white-space: normal;
+    padding: 0 8vw;
+    margin-top: 8vw;
   }
-  
+
+  /* Structural Padding */
+  .about, .feature-book, .library, .other-series, .connect {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .library__main-title {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .connect {
+    padding-top: 6rem;
+  }
+
+  /* Feature Books */
+  .feature-book__inner {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .feature-book--reverse .feature-book__inner {
+    direction: ltr;
+  }
+  .feature-book__text {
+    order: -1; 
+  }
+
+  /* Series Blocks */
   .series-block {
     grid-template-columns: 1fr;
-    gap: 10vw;
+    gap: 4rem;
+    margin-bottom: 6rem;
   }
-  
   .series-block--reverse {
     direction: ltr;
   }
-  
-  .horizontal-scroll-track {
-    gap: 10vw;
+  .series-block__text {
+    order: -1;
   }
   
-  .museum-book {
-    flex: 0 0 75vw;
+  /* All Series Blocks (Mobile Native Horizontal Carousel) */
+  .series-block__covers {
+    height: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    padding: 2rem 5vw 4rem 5vw;
+    gap: 2rem;
+    -webkit-overflow-scrolling: touch;
+    width: 100vw;
+    margin-left: -5vw;
+  }
+  
+  .series-block__covers::-webkit-scrollbar {
+    display: none;
+  }
+
+  .series-block__covers .series-book,
+  .series-block__covers.card-fan .series-book.sb-grid {
+    position: relative;
+    width: 60vw;
+    flex: 0 0 auto;
+    margin-left: 0;
+    margin-top: 0;
+    scroll-snap-align: center;
+    transform: none !important;
+  }
+  
+  /* Force details to be permanently visible on mobile */
+  .series-block__covers .series-book .card-details,
+  .series-block__covers.card-fan .series-book.sb-grid .card-details {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+  
+  .series-book:hover {
+    transform: none !important;
+  }
+  
+  /* Nav */
+  .nav {
+    padding: 1.5rem;
   }
 }
